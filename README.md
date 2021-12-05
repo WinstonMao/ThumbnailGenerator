@@ -1,2 +1,2 @@
 # Thumbnail Generator
-A library to generate thumbnail of thumbnai of 3d model.The first version supports stl,obj file format.
+A library to generate thumbnail of thumbnai of 3d models.The first version supports stl,obj file format.
