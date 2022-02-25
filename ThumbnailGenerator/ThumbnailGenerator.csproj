@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cpu\agg\Agg.csproj" />
+    <ProjectReference Include="..\Cpu\DataConverters3D\DataConverters3D.csproj" />
+    <ProjectReference Include="..\Cpu\ImageProcessing\ImageProcessing.csproj" />
+    <ProjectReference Include="..\Cpu\MeshThumbnails\MeshThumbnails\MeshThumbnails.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="test.stl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
