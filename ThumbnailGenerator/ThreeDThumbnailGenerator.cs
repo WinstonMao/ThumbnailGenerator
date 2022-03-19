@@ -31,19 +31,22 @@ namespace ThumbnailGenerator
 			switch (type)
 			{
 				case GeneratorType.Cpu:
-					var res=await Task.Run(() =>
+					return await Task.Run(() =>
 					{
 						GeneratorCpu generator = new();
 						var ob = Object3D.Load(srcPath, CancellationToken.None);
-						ob.Color = new MatterHackers.Agg.Color(color.R, color.G, color.B);
-						generator.SaveThumbnail(ob, width, height, targetPath);
-						var box=ob.GetAxisAlignedBoundingBox();
-
-						return new[] { (float)box.XSize, (float)box.YSize, (float)box.ZSize } ;							
-					});		
-					return new Object3DInfo() { 
-						Dimension=res,
-					};
+                        if (ob != null&& ob.Mesh != null)
+						{
+							var box = ob.GetAxisAlignedBoundingBox();
+						    ob.Color = new MatterHackers.Agg.Color(color.R, color.G, color.B);
+						    generator.SaveThumbnail(ob, width, height, targetPath);
+						    return new Object3DInfo
+						    {
+								Dimension = new[] { (float)box.XSize, (float)box.YSize, (float)box.ZSize }
+					        };
+						}						
+						return null;							
+					});	
 
 				case GeneratorType.OpenGL:
 					break;
